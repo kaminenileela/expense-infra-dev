@@ -1,8 +1,3 @@
-data "aws_ssm_parameter" "vpc_id" {
-  name = "/${var.project_name}/${var.environment}/vpc_id" 
-}
-
-
 data "aws_ssm_parameter" "vpn_sg_id" {
   name  = "/${var.project_name}/${var.environment}/vpn_sg_id"
 
@@ -13,11 +8,6 @@ data "aws_ssm_parameter" "public_subnet_ids" {
   
 }
 
-data "aws_ssm_parameter" "ansible_sg_id" {
-  name  = "/${var.project_name}/${var.environment}/ansible_sg_id"
- 
-}
-
 data "aws_ami" "ami_info" {
 
     most_recent = true
@@ -25,7 +15,7 @@ data "aws_ami" "ami_info" {
 
     filter {
         name   = "name"
-        values = ["OpenVPN Access Server Community Image-fe8020db"]
+        values = ["OpenVPN Access Server Community Image-fe8020db-*"]
     }
 
     filter {

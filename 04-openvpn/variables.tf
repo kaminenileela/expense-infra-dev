@@ -16,7 +16,7 @@ variable "common_tags" {
     }
 
 }
-variable "bastion_tags" {
+variable "vpn_tags" {
     default = {}
    
 }

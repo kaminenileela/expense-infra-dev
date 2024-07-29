@@ -7,7 +7,7 @@ terraform {
     }
     backend "s3" {
         bucket = "leela-expense-remote-state"
-        key = "expense-dev-bastion"
+        key = "expense-dev-vpn"
         region = "us-east-1"
         dynamodb_table = "expense-dynamo"
 
