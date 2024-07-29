@@ -67,7 +67,9 @@ module "vpn" {
     environment = var.environment
     sg_description = "SG for VPN Instances"
     sg_name = "vpn"
-    common_tags = var.common_tags   
+    common_tags = var.common_tags
+    ingress_rules = var.vpn_sg_rules
+      
 }
 
 #DB is accepting connections from backend
