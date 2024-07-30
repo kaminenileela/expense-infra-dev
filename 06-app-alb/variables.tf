@@ -21,3 +21,7 @@ variable "vpn_tags" {
     default = {}
    
 }
+
+variable "zone_name" {
+    default = "learningdevopsaws.online"
+}
