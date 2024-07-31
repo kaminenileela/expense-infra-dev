@@ -25,12 +25,7 @@ resource "null_resource" "cluster" {
         host = module.backend.private_ip
 
     }
-    provisioner "remote-exec" {
-        inline = [
-            
-            "sudo dnf install nginx -y",
-            "sudo systemctl start nginx"
-        ]
-
-    }
+     provisioner "file" {
+        source      = "bootstrap.sh"
+        destination = "/tmp/bootstrap.sh"
 }
