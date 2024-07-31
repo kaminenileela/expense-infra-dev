@@ -15,3 +15,10 @@ Application architecture is subjected to frequent change like security group rul
 
 
 * In this project we are using ansible pull based architecture, so we no need ansible server
+
+null_resource
+-------------
+
+null resource will not create any infra structure but this is useful to run local-exec, remote-exec and file provisioners.
+
+
