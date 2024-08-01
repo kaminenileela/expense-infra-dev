@@ -169,24 +169,28 @@ resource "aws_autoscaling_policy" "backend" {
 }
 
 
-resource "aws_lb_listener_rule" "static" {
-  listener_arn = data.aws_ssm_parameter.app_alb_listener_arn
-  priority     = 100
+resource "aws_lb_listener_rule" "backend" {
+  listener_arn = data.aws_ssm_parameter.app_alb_listener_arn.value
+  priority     = 100 # less number will be first validated
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.static.arn
+    target_group_arn = aws_lb_target_group.backend.arn
   }
 
   condition {
-    path_pattern {
-      values = ["/static/*"]
+    host_header { #host path
+      values = ["backend.app-${var.environment}.${var.zone_name}"]
     }
   }
 
-  condition {
-    host_header {
-      values = ["example.com"]
-    }
-  }
+ # condition {
+  #   path_pattern {
+  #     values = ["app-${var.environment}.${var.zone_name}/backend"] #this is context path
+  #   }
+  # }
+
+  #   cart.daws78s.online --> this is host path
+  # daws78s.online/cart --> this is context path
+
 }
