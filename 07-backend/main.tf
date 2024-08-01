@@ -152,3 +152,41 @@ resource "aws_autoscaling_group" "backend" {
   }
 }
 
+
+resource "aws_autoscaling_policy" "backend" {
+  name                   = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.backend.name
+  
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+
+    target_value = 10.0
+  }
+
+}
+
+
+resource "aws_lb_listener_rule" "static" {
+  listener_arn = data.aws_ssm_parameter.app_alb_listener_arn
+  priority     = 100
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.static.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/static/*"]
+    }
+  }
+
+  condition {
+    host_header {
+      values = ["example.com"]
+    }
+  }
+}
