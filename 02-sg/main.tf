@@ -55,9 +55,20 @@ module "app_alb" {
     sg_description = "SG for APP ALB Instances"
     sg_name = "app_alb"
     common_tags = var.common_tags
-    
-
 }
+
+module "web_alb" {
+    #source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    vpc_id = data.aws_ssm_parameter.vpc_id.value
+    project_name = var.project_name
+    environment = var.environment
+    sg_description = "SG for Web ALB Instances"
+    sg_name = "web_alb"
+    common_tags = var.common_tags
+}
+
+
 
 module "vpn" {
     #source = "../../terraform-aws-securitygroup"
@@ -172,4 +183,31 @@ resource "aws_security_group_rule" "app_alb_vpn" {
   protocol          = "tcp"
   source_security_group_id = module.vpn.sg_id
   security_group_id = module.app_alb.sg_id
+}
+
+resource "aws_security_group_rule" "app_alb_frontend" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  source_security_group_id = module.frontend.sg_id
+  security_group_id = module.app_alb.sg_id
+}
+
+resource "aws_security_group_rule" "web_alb_public" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = module.web_alb.sg_id
+}
+
+resource "aws_security_group_rule" "web_alb_public_https" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = module.web_alb.sg_id
 }

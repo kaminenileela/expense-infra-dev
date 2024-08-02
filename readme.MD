@@ -61,5 +61,12 @@ server state --> terminated
 declared state --> create the server
 
 
+terraform target resource:
+--------------------------
+
+terraform plan -target=aws_autoscaling_group.backend ---> to specifically run only a particular resource use target.
+
+
+
 
 
