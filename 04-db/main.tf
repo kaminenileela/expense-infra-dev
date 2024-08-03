@@ -7,7 +7,6 @@ module "db" {
   engine_version    = "8.0"
   instance_class    = "db.t3.micro"
   allocated_storage = 5
-  availability_zone = "us-east-1a"
   db_name  = "transactions" #default schema for expense project
   username = "root"
   port     = "3306"
@@ -70,7 +69,7 @@ module "db" {
 
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   zone_name = var.zone_name
 
