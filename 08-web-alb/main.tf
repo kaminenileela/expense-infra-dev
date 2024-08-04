@@ -59,7 +59,7 @@ module "records" {
     {
       name    = "web-${var.environment}"
       type    = "A"
-      ttl     = 1
+      # ttl     = 1
       allow_overwrite = true
        alias   = {
         name    = aws_lb.web_alb.dns_name

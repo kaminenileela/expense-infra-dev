@@ -26,14 +26,14 @@ resource "null_resource" "frontend" {
 
     }
      provisioner "file" {
-        source      = "bootstrap.sh"
-        destination = "/tmp/bootstrap.sh"
-}
+        source      = "frontend.sh"
+        destination = "/tmp/frontend.sh"
+    }
 
       provisioner "remote-exec" {
         inline = [
-            "chmod +x /tmp/bootstrap.sh",
-            "sudo sh /tmp/bootstrap.sh ${var.common_tags.Component} ${var.environment}"
+            "chmod +x /tmp/frontend.sh",
+            "sudo sh /tmp/frontend.sh ${var.common_tags.Component} ${var.environment}"
             
         ]
 

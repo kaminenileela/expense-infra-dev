@@ -28,6 +28,6 @@ resource "aws_route53_record" "backend" {
 }
 
 resource "aws_acm_certificate_validation" "backend" {
-  certificate_arn         = aws_acm_certificate.backend.arn
+  certificate_arn         = aws_acm_certificate.expense.arn
   validation_record_fqdns = [for record in aws_route53_record.backend: record.fqdn]
 }
