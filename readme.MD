@@ -1,8 +1,14 @@
-* SG Rules
+SG Rules
+------------
+
+
 ![alt text](02-sg/sg-rules.svg)
 
 
-* Expense Architecture
+Expense Architecture
+---------------------
+
+
 ![alt text](expense-infra-dev.drawio.svg)
 
 
