@@ -18,6 +18,7 @@ resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.app_alb.arn
   port              = "80"
   protocol          = "HTTP"
+
   
   default_action {
     type = "fixed-response"
@@ -40,7 +41,7 @@ module "records" {
     {
       name    = "*.app-${var.environment}"
       type    = "A"
-      ttl     = 1
+      # ttl     = 1
       allow_overwrite = true
        alias   = {
         name    = aws_lb.app_alb.dns_name
