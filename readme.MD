@@ -77,6 +77,13 @@ terraform target resource:
 
 terraform plan -target=aws_autoscaling_group.backend ---> to specifically run only a particular resource use target.
 
+Application load balancer
+----------------------------
+
+Its works on layer 7 in network diagram.
+It is intelligent.it can route the requests to different target groups based on host path or context path.
+
+
 
 
 
