@@ -1,7 +1,7 @@
 #openvpn is a key based AMI so generating keypair using terraform
 resource "aws_key_pair" "vpn" {
   key_name   = "vpn"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkBelb1e7Yg8spL1gzRfIGcnfUpUe3cVbASEzYkzi2v Leela@LEELA-DESKTOP"
+  # public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkBelb1e7Yg8spL1gzRfIGcnfUpUe3cVbASEzYkzi2v Leela@LEELA-DESKTOP"
   public_key = file ("~/.ssh/github.pub")
 }
 
