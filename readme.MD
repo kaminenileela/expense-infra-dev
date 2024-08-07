@@ -84,6 +84,12 @@ Its works on layer 7 in network diagram.
 It is intelligent.it can route the requests to different target groups based on host path or context path.
 
 
+HTTP METHODS
+--------------
+GET
+POST
+PUT
+METHOD
 
 
 
