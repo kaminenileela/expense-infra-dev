@@ -86,7 +86,7 @@ module "records" {
 
   records = [
     {
-      name    = "*web-cdn.${var.zone_name}"
+      name    = "web-cdn"
       type    = "A"
       # ttl     = 1
       allow_overwrite = true
