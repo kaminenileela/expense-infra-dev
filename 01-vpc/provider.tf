@@ -9,7 +9,7 @@ terraform {
         bucket = "leela-expense-remote-state"
         key = "expense-dev-vpc"
         region = "us-east-1"
-        dynamodb_table = "expense-dynamo"
+        dynamodb_table = "expense-dynamo" #LockID
 
     }
  }
