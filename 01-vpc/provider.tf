@@ -6,7 +6,7 @@ terraform {
     }
     }
     backend "s3" {
-        bucket = "leela-expense-remote-state"
+        bucket = "leelaexpense-remote-state"
         key = "expense-dev-vpc"
         region = "us-east-1"
         dynamodb_table = "expense-dynamo" #LockID
