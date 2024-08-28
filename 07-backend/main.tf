@@ -164,7 +164,7 @@ resource "aws_autoscaling_policy" "backend" {
       predefined_metric_type = "ASGAverageCPUUtilization"
     }
 
-    target_value = 10.0
+    target_value = 70.0  #if cpu utilisation is this % another resource will be created automatically
   }
 
 }
