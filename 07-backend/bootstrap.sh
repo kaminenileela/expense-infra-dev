@@ -2,10 +2,10 @@
 component=$1
 environment=$2
 # sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-sudo dnf update
-sudo dnf install epel-release
+sudo yum update
+sudo yum install epel-release
 echo "installing ansible"
-dnf install ansible -y 
+yum install ansible -y 
 echo "installing ansible exit status: $?"
 # echo "installing pip"
 # pip3.9 install botocore boto3
