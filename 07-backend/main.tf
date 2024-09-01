@@ -28,16 +28,16 @@ resource "null_resource" "backend" {
      provisioner "file" {
         source      = "bootstrap.sh"
         destination = "/tmp/bootstrap.sh"
-}
+    }
 
       provisioner "remote-exec" {
         inline = [
             "chmod +x /tmp/bootstrap.sh",
-            "sudo sh /tmp/bootstrap.sh ${var.common_tags.Component} ${var.environment}"
+            "sudo sh /tmp/bootstrap.sh ${var.common_tags.Component} ${var.environment}",
             
         ]
 
-    }
+      }
 }
 
 resource "aws_ec2_instance_state" "backend" {
