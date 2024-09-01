@@ -68,9 +68,9 @@ resource "null_resource" "backend_delete" {
 
       provisioner "local-exec" {
           command = "aws ec2 terminate-instances --instance-ids ${module.backend.id}"
-    }
+      }
 
-    depends_on = [ aws_ami_from_instance.backend ]
+  depends_on = [ aws_ami_from_instance.backend ]
 }
 
 resource "aws_lb_target_group" "backend" {
@@ -110,8 +110,8 @@ resource "aws_launch_template" "backend" {
       {
       Name = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
       }
-  )
-}
+   )
+  }
 }
 
 resource "aws_autoscaling_group" "backend" {
