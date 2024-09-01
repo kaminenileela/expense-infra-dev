@@ -3,7 +3,7 @@ component=$1
 environment=$2
 # sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 sudo yum update
-sudo yum install epel-release
+sudo yum install epel-release -y
 echo "installing ansible"
 yum install ansible -y 
 echo "installing ansible exit status: $?"
