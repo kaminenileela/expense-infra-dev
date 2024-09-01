@@ -7,9 +7,9 @@ module "backend" {
   subnet_id              = local.private_subnet_id_final
   ami = data.aws_ami.ami_info.id
   tags = merge (var.common_tags,  
-  {
+   {
     Name = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
-  }
+   }
   )
 }
 
@@ -17,7 +17,6 @@ resource "null_resource" "backend" {
     triggers = {
       instance_id = module.backend.id #this will be triggered everytime instanvce is created
     }
-
     connection {
         type  = "ssh"
         user  = "ec2-user"
@@ -26,14 +25,14 @@ resource "null_resource" "backend" {
 
     }
      provisioner "file" {
-        source      = "bootstrap.sh"
-        destination = "/tmp/bootstrap.sh"
+        source      = "${var.common_tags.Component}.sh"
+        destination = "/tmp/${var.common_tags.Component}.sh"
     }
 
       provisioner "remote-exec" {
         inline = [
-            "chmod +x /tmp/bootstrap.sh",
-            "sudo sh /tmp/bootstrap.sh ${var.common_tags.Component} ${var.environment}",
+            "chmod +x /tmp/${var.common_tags.Component}.sh",
+            "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment}"
             
         ]
 
@@ -164,7 +163,7 @@ resource "aws_autoscaling_policy" "backend" {
       predefined_metric_type = "ASGAverageCPUUtilization"
     }
 
-    target_value = 70.0  #if cpu utilisation is this % another resource will be created automatically
+    target_value = 10.0  #if cpu utilisation is this % another resource will be created automatically
   }
 
 }
