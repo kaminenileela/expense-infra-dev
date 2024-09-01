@@ -1,6 +1,6 @@
 module "sg_db" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
@@ -11,8 +11,8 @@ module "sg_db" {
 }
 
 module "sg_backend" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
@@ -23,8 +23,8 @@ module "sg_backend" {
 }
 
 module "sg_frontend" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
@@ -35,8 +35,8 @@ module "sg_frontend" {
 }
 
 module "sg_bastion" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
@@ -47,8 +47,8 @@ module "sg_bastion" {
 }
 
 module "app_alb" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
@@ -58,8 +58,8 @@ module "app_alb" {
 }
 
 module "web_alb" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
@@ -71,8 +71,8 @@ module "web_alb" {
 
 
 module "vpn" {
-    #source = "../../terraform-aws-securitygroup"
-    source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
+    source = "../../terraform-aws-securitygroup"
+    # source = "git::https://github.com/kaminenileela/terraform-aws-securitygroup.git"
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     project_name = var.project_name
     environment = var.environment
